@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jamar Burns</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>Transmission Detected</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <button class="enter-button">Enter</button>
+
+  <!-- OPENING SCENE -->
+  <div id="scene-alien" class="scene active">
+    <div class="stars"></div>
+
+    <div id="alien" aria-label="Alien">
+      <div class="head">
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="mouth"></div>
+      </div>
+      <p class="hint">CLICK THE ALIEN</p>
+    </div>
+  </div>
+
+  <!-- SPACESHIP INTERFACE -->
+  <div id="scene-ship" class="scene">
+    <div class="hud">
+      <div class="scan-circle"></div>
+      <div class="crosshair"></div>
+      <div class="hud-text">
+        <p id="status">INITIALIZING SCAN...</p>
+        <p id="coords"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
