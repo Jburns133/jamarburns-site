@@ -1,27 +1,37 @@
-document.getElementById("enterBtn").addEventListener("click", () => {
-  const btn = document.getElementById("enterBtn");
+const alien = document.getElementById("alien");
+const mouth = document.querySelector(".mouth");
+const sceneAlien = document.getElementById("scene-alien");
+const sceneShip = document.getElementById("scene-ship");
+const statusText = document.getElementById("status");
+const coordsText = document.getElementById("coords");
 
-  btn.classList.add("pressed");
+alien.addEventListener("click", () => {
+  mouth.classList.add("open");
 
   setTimeout(() => {
-    document.getElementById("screen1").classList.add("hidden");
-    document.getElementById("screen2").classList.remove("hidden");
-
-    typeTerminalText("Searching for Jamar...\nOne moment.");
-  }, 400);
+    sceneAlien.classList.remove("active");
+    sceneShip.classList.add("active");
+    startScanning();
+  }, 900);
 });
 
-function typeTerminalText(text) {
-  const container = document.querySelector(".crt");
-  container.innerHTML = "";
-  let i = 0;
+function startScanning() {
+  const messages = [
+    "SEARCHING FOR LIFEFORM...",
+    "SCANNING NEURAL SIGNALS...",
+    "ANALYZING BIO-SIGNATURE...",
+    "TARGET NOT FOUND...",
+    "RECALIBRATING..."
+  ];
 
-  const typingInterval = setInterval(() => {
-    if (i < text.length) {
-      container.innerHTML += text[i] === "\n" ? "<br/>" : text[i];
-      i++;
-    } else {
-      clearInterval(typingInterval);
-    }
-  }, 75);
+  let index = 0;
+
+  setInterval(() => {
+    statusText.textContent = messages[index % messages.length];
+    coordsText.textContent =
+      "COORDS: " +
+      (Math.random() * 999).toFixed(2) + " : " +
+      (Math.random() * 999).toFixed(2);
+    index++;
+  }, 1200);
 }
